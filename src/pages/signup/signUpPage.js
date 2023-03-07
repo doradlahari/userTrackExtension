@@ -59,10 +59,6 @@ export default function SignUpPage() {
             sx={{
               backgroundImage: "url(https://source.unsplash.com/random)",
               backgroundRepeat: "no-repeat",
-              backgroundColor: (t) =>
-                t.palette.mode === "light"
-                  ? t.palette.grey[50]
-                  : t.palette.grey[900],
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -91,11 +87,6 @@ export default function SignUpPage() {
               <Typography component="h1" variant="h5">
                 Sign up
               </Typography>
-              <p> {formValues.firstName} </p>
-              <p> {formValues.lastName} </p>
-              <p> {formValues.email} </p>
-              <p> {formValues.password} </p>
-              <p> {formValues.conformPassword} </p>
               <Box
                 component="form"
                 noValidate
