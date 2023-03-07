@@ -12,6 +12,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Paper } from "@mui/material";
 import { auth } from "../../fireBase/fireBase";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
@@ -27,6 +28,7 @@ export default function SignUpPage() {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     auth
@@ -37,6 +39,7 @@ export default function SignUpPage() {
         formValues.lastName
       )
       .then((user) => console.log(user));
+    navigate("/");
   };
 
   return (
@@ -46,8 +49,6 @@ export default function SignUpPage() {
           <CssBaseline />
         </Container>
       </ThemeProvider>
-
-      {/* next one */}
       <ThemeProvider theme={theme}>
         <Grid container component="main" sx={{ height: "100vh" }}>
           <CssBaseline />

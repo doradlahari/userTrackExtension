@@ -13,10 +13,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { auth } from "../../fireBase/fireBase";
+import { useNavigate } from "react-router-dom";
 const theme = createTheme();
 function LoginPage() {
   const LogininitialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(LogininitialValues);
+  const navigate = useNavigate();
   const handlerInput = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -26,6 +28,7 @@ function LoginPage() {
     auth
       .signInWithEmailAndPassword(formValues.email, formValues.password)
       .then((user) => console.log(user));
+    navigate("/homepage");
   };
 
   return (
@@ -40,10 +43,6 @@ function LoginPage() {
           sx={{
             backgroundImage: "url(https://source.unsplash.com/random)",
             backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
